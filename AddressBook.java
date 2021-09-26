@@ -1,33 +1,37 @@
 package com.bridgelabz;
-
-import java.util.*;
+import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import Day8_Programs.PresentAbsent;
-
 public class AddressBook {
 	private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
     public static void main(String[] args) {
         Log.info("Welcome to the Address Book System code !!!");
-        Scanner sc = new Scanner(System.in);
-        AddressBookDe person = new AddressBookDe();
-        
-        person.addContact();//Calling Add Contacts Method
-        Log.info("Enter Y To Edit The Contact");
-        String op = sc.nextLine();
-
-        if (op.equals("y") || op.equals("Y")) {
-
-            Log.info("You have Entered following data");
-            Log.info("The Contact Details After Editing : " + person);
-            person.editContact();
+            Scanner sc = new Scanner(System.in);
+        AddressBookDe Book = new AddressBookDe();
+            Book.addContact();//Calling Add Contacts Method
+            Log.info(Book.person);
+            Log.info("Enter the choice \n 1. Edit \n 2. Delete");
+            int option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    Book.editContact();
+                    Log.info("You have Entered following data");
+                    Log.info(Book.person);
+                    Log.info("Thank you for Using the Address book");
+                    break;
+                case 2:
+                    Book.deleteContact();
+                    Log.info("Address Book details :" + Book.person);
+                    break;
+            }
         }
     }
-}
 
 class contactDetails {
+	private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
     private String firstName;
     private String lastName;
     private String addressCity;
@@ -110,42 +114,55 @@ class contactDetails {
 }
  class AddressBookDe {
 	 private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
-    Scanner sc = new Scanner(System.in);
-    contactDetails person = new contactDetails();
-    public void addContact() {
-        Log.info("Enter First Name: ");
-        String firstName = sc.nextLine();
-        Log.info("Enter last Name: ");
-        String lastName = sc.nextLine();
-        Log.info("Enter your addressCity: ");
-        String addressCity = sc.nextLine();
-        Log.info("Enter your state: ");
-        String state = sc.nextLine();
-        Log.info("Enter zip code : ");
-        Long zip = sc.nextLong();
-        sc.nextLine();
-        Log.info("Enter phone number: ");
-        Long phoneNumber = sc.nextLong();
-        sc.nextLine();
-        Log.info("Enter your EMail ID: ");
-        String email = sc.nextLine();
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
-        person.setAddressCity(addressCity);
-        person.setState(state);
-        person.setZip(zip.intValue());
-        person.setPhoneNumber(phoneNumber.intValue());
-        person.setEmail(email);
-        Log.info("The Contact Details of " + firstName + "\n" + person);
-    }
+     Scanner sc = new Scanner(System.in);
 
-    public void editContact() {
-        Log.info("Enter the firstName of person");
-        String editName = sc.nextLine();
-        if (editName.equalsIgnoreCase(person.getFirstName()))
-            addContact();
-        else
-            Log.info("The Entered First Name Is Not Match");
-        editContact();
-    }
-}
+     contactDetails person = new contactDetails();
+
+     public void addContact() {
+         //contactDetails person = new contactDetails();
+         Log.info("Enter First Name: ");
+         String firstName = sc.nextLine();
+         Log.info("Enter last Name: ");
+         String lastName = sc.nextLine();
+         Log.info("Enter your addressCity: ");
+         String addressCity = sc.nextLine();
+         Log.info("Enter your state: ");
+         String state = sc.nextLine();
+         Log.info("Enter zip code : ");
+         Long zip = sc.nextLong();
+         sc.nextLine();
+         Log.info("Enter phone number: ");
+         Long phoneNumber = sc.nextLong();
+         sc.nextLine();
+         Log.info("Enter your EMail ID: ");
+         String email = sc.nextLine();
+         person.setFirstName(firstName);
+         person.setLastName(lastName);
+         person.setAddressCity(addressCity);
+         person.setState(state);
+         person.setZip(zip.intValue());
+         person.setPhoneNumber(phoneNumber.intValue());
+         person.setEmail(email);
+         Log.info("The Contact Details of " + firstName + "\n" + person);
+     }
+
+
+     public void editContact() {
+         //Scanner editName = new Scanner(System.in);
+         Log.info("Enter the firstName of person");
+         String editName = sc.nextLine();
+         if (editName.equalsIgnoreCase(person.getFirstName()))
+             addContact();
+         else
+             Log.info("The Entered First Name Is Not Match");
+         editContact();
+     }
+     public void deleteContact() {
+         Log.info("Enter firstName of the person");
+         String editName = sc.nextLine();
+         if (editName.equals(person.getFirstName())) {
+             Log.info("Deleted " + person.getFirstName() + " details");
+             person = null;
+         }
+     }
+ }
