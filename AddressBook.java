@@ -11,7 +11,7 @@ public class AddressBook {
         newContact.setZip(740681) ;
         newContact.setEmail("@gmail.com \n");
         newContact.setPhoneNumber( 9078666455l);
-        System.out.println("The Contact is : \n" +newContact);
+        System.out.println("The Contact is : \n" +newContact);// printing object reference
     }
 }
 
@@ -82,9 +82,9 @@ class contactDetails {
         this.email = email;
     }
 
-
+//overriding the toString method to print these values ,when we printing the object referance
     @Override
-    public String toString() {
+    public String toString() { 
         return
                         " FirstName : " + firstName +
                         " LastName : " + lastName +
