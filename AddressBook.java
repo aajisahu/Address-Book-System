@@ -86,13 +86,8 @@ class contactDetails {
     @Override
     public String toString() { 
         return
-                        " FirstName : " + firstName +
-                        " LastName : " + lastName +
-                        " Address City : " + addressCity +
-                        " State : " + state +
-                        " Zip : " + zip +'\'' +
-                        " PhoneNumber : " + phoneNumber +'\'' +
-                        " Email : " + email;
+                        " FirstName    : " + firstName +" LastName     : " + lastName +" Address City : " + addressCity +" State : " + state +" Zip : " + zip +'\'' +
+                        " PhoneNumber : " + phoneNumber +"\" +" Email : " + email;
 
     }
 }
